@@ -11,6 +11,40 @@ if exists("g:loaded_vim_beast")
 endif
 let g:loaded_vim_beast = 1
 
+ " Jump to next placeholder
+inoremap ,, <Esc>/<++><Enter>df>a
+inoremap [] []<++><esc>T[i
+inoremap {} {}<++><esc>T{i
+inoremap () ()<++><esc>T(i
+
+" special keybindings
+inoremap ,ref \ref{}<++><Esc>T{i
+inoremap ,label \label{}<++><Esc>T{i
+inoremap ,cite \cite{}<++><Esc>T{i
+inoremap ,fullcite \fullcite{}<++><Esc>T{i
+inoremap ,bf \textbf{}<++><Esc>T{i
+inoremap ,it \textit{}<++><Esc>T{i
+inoremap ,tt \texttt{}<++><Esc>T{i
+inoremap ,sc \textsc{}<++><Esc>T{i
+inoremap ,abd \ac{}<++><Esc>T{i
+inoremap ,abs \acs{}<++><Esc>T{i
+inoremap ,abl \acl{}<++><Esc>T{i
+inoremap ,abp \acp{}<++><Esc>T{i
+inoremap ,gls \gls{}<++><Esc>T{i
+inoremap ,glsp \glspl{}<++><Esc>T{i
+
+inoremap ,begin \begin{}<++><ESC>o<++><ESC>kT{i
+inoremap ,end \end{}<++><ESC>0xt{la
+inoremap ,item \item
+inoremap ,, <Esc>/<++><Enter>df>a
+nnoremap ,, /<++><ENTER>df>a
+inoremap [] []<++><esc>T[i
+inoremap {} {}<++><esc>T{i
+
+inoremap ,SEC \section{}<++><esc>T{i
+inoremap ,SUSEC \subsection{}<++><esc>T{i
+inoremap ,SUSUSEC \subsubsection{}<++><esc>T{i
+autocmd VimLeave *.tex !texclear %
 " Exposes the plugin's functions for use as commands in Vim.
 " command! -nargs=0 DisplayTime call example-plugin#DisplayTime()
 " command! -nargs=0 DefineWord call example-plugin#DefineWord()
@@ -18,7 +52,8 @@ let g:loaded_vim_beast = 1
     
 nnoremap <leader>ba :!make all -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
 nnoremap <leader>bc :!make chapters -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
-nnoremap <leader>r :!make clean -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
+nnoremap <leader>bi :!make intro -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
+
 function! FindProjectRoot(lookFor)
     let pathMaker='%:p'
     while(len(expand(pathMaker))>1)
