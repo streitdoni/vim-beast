@@ -54,6 +54,9 @@ nnoremap <leader>ba :!make all -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
 nnoremap <leader>bc :!make chapters -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
 nnoremap <leader>bi :!make intro -C <c-r>=FindProjectRoot('Makefile')<cr><cr>
 
+" Open zathura
+nnoremap <leader>v :!vim_opener %:p <CR><CR>
+
 function! FindProjectRoot(lookFor)
     let pathMaker='%:p'
     while(len(expand(pathMaker))>1)
