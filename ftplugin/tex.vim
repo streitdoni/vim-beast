@@ -34,16 +34,16 @@ inoremap ,gls \gls{}<++><Esc>T{i
 inoremap ,glsp \glspl{}<++><Esc>T{i
 
 inoremap ,begin \begin{}<++><ESC>o<++><ESC>kT{i
-inoremap ,end \end{}<++><ESC>0xt{la
+inoremap ,end \end{}<++><ESC>0t{la
 inoremap ,item \item
 inoremap ,, <Esc>/<++><Enter>df>a
 nnoremap ,, /<++><ENTER>df>a
 inoremap [] []<++><esc>T[i
 inoremap {} {}<++><esc>T{i
 
-inoremap ,SEC \section{}<++><esc>T{i
-inoremap ,SUSEC \subsection{}<++><esc>T{i
-inoremap ,SUSUSEC \subsubsection{}<++><esc>T{i
+inoremap SEC \section{}<++><esc>T{i
+inoremap SUSEC \subsection{}<++><esc>T{i
+inoremap SUSUSEC \subsubsection{}<++><esc>T{i
 autocmd VimLeave *.tex !texclear %
 " Exposes the plugin's functions for use as commands in Vim.
 " command! -nargs=0 DisplayTime call example-plugin#DisplayTime()
@@ -68,3 +68,4 @@ function! FindProjectRoot(lookFor)
     endwhile
     return 0
 endfunction
+nnoremap <leader>bn :!latexmk -g -pdf %<cr>
